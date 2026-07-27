@@ -36,7 +36,6 @@ There is no build step, linter, or frontend bundler configured — this is plain
 
 # Working Instructions (Usman's preferences)
 
-- Always work directly on the master branch, in this main project folder. Never create separate branches or worktrees unless I explicitly ask for one.
-- Before asking me to approve any bash command or code change, always explain in plain English first: what this specific command or change actually does, and what will be different after it runs. Don't just show the raw command/diff and ask yes/no.
+- Before asking me to approve any bash command or code change, always explain in plain English first(just like explaining a concept with analogy ): what this specific command or change actually does, and what will be different after it runs. Don't just show the raw command/diff and ask yes/no.
 - After making any code change, always explain what you changed and why, in plain English, before moving on — even if I don't ask.
 - I run git add, git commit, and git push myself, manually. Don't run these automatically on my behalf.
