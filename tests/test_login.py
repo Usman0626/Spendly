@@ -159,3 +159,29 @@ def test_navbar_shows_sign_in_when_logged_out(client):
     assert b"Sign in" in response.data
     assert b"Get started" in response.data
     assert b"Logout" not in response.data
+
+
+def test_get_login_redirects_away_when_already_logged_in(client, isolated_db):
+    user_id = _create_user(isolated_db, name="Arjun Nair", email="arjun.nair@example.com", password="password123")
+
+    with client.session_transaction() as sess:
+        sess["user_id"] = user_id
+        sess["user_name"] = "Arjun Nair"
+
+    response = client.get("/login")
+
+    assert response.status_code == 302
+    assert response.headers["Location"] == "/"
+
+
+def test_get_register_redirects_away_when_already_logged_in(client, isolated_db):
+    user_id = _create_user(isolated_db, name="Divya Menon", email="divya.menon@example.com", password="password123")
+
+    with client.session_transaction() as sess:
+        sess["user_id"] = user_id
+        sess["user_name"] = "Divya Menon"
+
+    response = client.get("/register")
+
+    assert response.status_code == 302
+    assert response.headers["Location"] == "/"
